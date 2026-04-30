@@ -43,4 +43,5 @@ Suggested paid pilot after explicit buyer interest: **$49** for a customized rub
 - `buyer_intake_template.md` — exact safe reply after a buyer asks for a sample, trial, or more detail.
 - `qualified_intake_reply_template.md` — paste-ready follow-up after a buyer gives qualified intake or asks for a sample.
 - `buyer_response_signal_decision.md` — response log rules separating qualified pipeline, no-count replies, Corey payment holds, and kill/replace after 5 no-count outcomes.
+- `agency_proposal_qa_checklist.md` — replacement agency-facing QA checklist and paste-ready permissioned ask if the generic freelancer sample-request route stays silent.
 - `test_slim_scorer.py` — regression tests.
