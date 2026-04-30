@@ -17,6 +17,7 @@ It is designed for cash-forward, low-risk service offers:
 python3 pr_readiness_checker_lite.py --diff sample_diff.txt
 python3 pr_readiness_checker_lite.py --service-template
 python3 pr_readiness_checker_lite.py --ci-preflight-template
+python3 pr_readiness_checker_lite.py --reviewer-reply-template
 python3 -m unittest -v
 ```
 
@@ -30,4 +31,4 @@ Use it when a PR is stuck, noisy, or risky. Paste a redacted diff and send the o
 
 Qualified signal rule: only a real public PR, redacted diff, or explicit fixed-scope cleanup request counts. Payment collection stays on Corey hold until invoice/payment/account setup is approved.
 
-Use `pr_cleanup_sample_request.md` or `--service-template` to convert interest into paste-safe public/redacted inputs before any payment discussion. If the buyer specifically has a failing CI check, use `ci_failure_preflight.md` or `--ci-preflight-template` to request the exact command/log excerpt without credentials, private repo access, or CI dashboard login.
+Use `pr_cleanup_sample_request.md` or `--service-template` to convert interest into paste-safe public/redacted inputs before any payment discussion. If the buyer specifically has a failing CI check, use `ci_failure_preflight.md` or `--ci-preflight-template` to request the exact command/log excerpt without credentials, private repo access, or CI dashboard login. After qualified inputs arrive, use `reviewer_reply_template.md` or `--reviewer-reply-template` to send a safe preflight response and convert explicit paid-pilot interest into a Corey-held payment/setup decision.

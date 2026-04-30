@@ -150,16 +150,48 @@ def render_ci_preflight_template() -> str:
     ])
 
 
+def render_reviewer_reply_template() -> str:
+    """Return a paste-ready reply that converts qualified PR/CI inputs into a safe cleanup ask."""
+    return "\n".join([
+        "Reviewer reply template for blocked PR cleanup",
+        "",
+        "Use this after a buyer provides paste-safe public/redacted PR or diff inputs plus a failing command, log excerpt, or reviewer blocker.",
+        "",
+        "Paste-ready response:",
+        "Thanks — I can review this from the public/redacted material only.",
+        "- Failure class: <test failure | type error | lint | reviewer-risk | unclear>",
+        "- Smallest repro: <exact command/check name, if supplied>",
+        "- Likely fix path: <one small patch/test/docs/reviewer-map action>",
+        "- Risk/rollback note: <what could break and how to revert>",
+        "",
+        "Safe next step: I can send a short cleanup plan from the public PR/diff first. If you want implementation help after that, reply with \"fixed-scope cleanup\" and the exact public/redacted inputs below. Payment/invoice/account/KYC setup stays on Corey hold until explicit paid-pilot intent is present.",
+        "",
+        "Required inputs before counting as qualified pipeline:",
+        "1. Public PR URL or redacted saved diff:",
+        "2. Exact failing command/check name:",
+        "3. Redacted first error/log excerpt or reviewer comment:",
+        "4. Desired outcome: reproduce note / minimal patch / test update / reviewer reply draft:",
+        "5. Paid-pilot intent: no / maybe / yes fixed-scope cleanup:",
+        "",
+        "Do not accept credentials, secrets, private repo exports, CI dashboard login, private logs, scraping, auto-commenting, guaranteed merge/payment claims, or broad consulting without public/redacted PR/diff inputs.",
+        "",
+        "Signal rule: count only usable public/redacted PR/diff inputs with an exact failing command/log/reviewer blocker, or explicit fixed-scope cleanup intent. Silence, stars, views, generic interest, and unsafe private-data/login asks are no-count.",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score a git diff for PR readiness without network access.")
     parser.add_argument("--diff", help="Path to a saved git diff text file")
     parser.add_argument("--service-template", action="store_true", help="Print a paste-safe buyer intake template for PR cleanup requests")
     parser.add_argument("--ci-preflight-template", action="store_true", help="Print a narrower CI-failure buyer intake template")
+    parser.add_argument("--reviewer-reply-template", action="store_true", help="Print a paste-ready reply for qualified blocked-PR cleanup inputs")
     args = parser.parse_args()
     if args.service_template:
         print(render_service_template())
     elif args.ci_preflight_template:
         print(render_ci_preflight_template())
+    elif args.reviewer_reply_template:
+        print(render_reviewer_reply_template())
     else:
         if not args.diff:
             parser.error("--diff is required unless a template flag is used")
