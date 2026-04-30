@@ -1,0 +1,13 @@
+PR Readiness Checker Lite
+Verdict: needs-tightening (75/100)
+Changed files: 2; changed lines: 8
+
+Reviewer checklist:
+- Test signal present: keep/quote the exact command and result in the PR.
+- No docs signal: state why docs are unnecessary or add a short note.
+- Risk terms found: payment. Add rollback and reviewer notes.
+- Small diff (8 changed lines): likely reviewable if tests are clear.
+
+Cash-forward service hook:
+- If this flags risk, offer a fixed-scope PR cleanup: tests, reviewer map, and merge-ready notes.
+- Keep payment/invoice setup on Corey hold until buyer intent is explicit.

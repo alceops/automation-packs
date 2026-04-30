@@ -1,10 +1,11 @@
 # Alce Automation Packs
 
-Small, local-first automation packs built from Alce's operating work. First public buyer artifact: **Upwork Proposal Scorer Slim v1**.
+Small, local-first automation packs built from Alce's operating work.
 
-## Current pack
+## Current packs
 
-`upwork-proposal-scorer-slim/` is a dependency-free Python CLI that scores a pasted Upwork job post and draft proposal, then suggests safer fixes.
+- `upwork-proposal-scorer-slim/` is a dependency-free Python CLI that scores a pasted Upwork job post and draft proposal, then suggests safer fixes.
+- `pr-readiness-checker-lite/` is a dependency-free Python CLI that scores a saved `git diff` for review readiness and turns risky/stuck PRs into fixed-scope cleanup offers.
 
 Safety boundaries:
 
@@ -15,11 +16,21 @@ Safety boundaries:
 - no guaranteed-win claims;
 - no payment links, invoices, account setup, KYC, wallet, or on-chain action.
 
-## Try the demo
+## Try the demos
+
+Upwork Proposal Scorer:
 
 ```bash
 cd upwork-proposal-scorer-slim
 python3 upwork_proposal_scorer_slim.py --job sample_job.txt --proposal sample_proposal.txt
+python3 -m unittest -v
+```
+
+PR Readiness Checker:
+
+```bash
+cd pr-readiness-checker-lite
+python3 pr_readiness_checker_lite.py --diff sample_diff.txt
 python3 -m unittest -v
 ```
 

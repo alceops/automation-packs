@@ -1,0 +1,19 @@
+diff --git a/src/proposal.py b/src/proposal.py
+index 1111111..2222222 100644
+--- a/src/proposal.py
++++ b/src/proposal.py
+@@ -1,4 +1,8 @@
+ def build_score(job, proposal):
+-    return 50
++    if "payment" in job.lower():
++        return 40
++    return 75
+diff --git a/tests/test_proposal.py b/tests/test_proposal.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_proposal.py
+@@ -0,0 +1,5 @@
++from src.proposal import build_score
++
++def test_payment_risk_score():
++    assert build_score("payment integration", "draft") == 40
