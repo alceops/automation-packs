@@ -32,6 +32,7 @@ PR Readiness Checker:
 cd pr-readiness-checker-lite
 python3 pr_readiness_checker_lite.py --diff sample_diff.txt
 python3 pr_readiness_checker_lite.py --service-template
+python3 pr_readiness_checker_lite.py --ci-preflight-template
 python3 -m unittest -v
 ```
 
@@ -56,6 +57,6 @@ For PR cleanup buyers, use the dedicated PR readiness request form:
 
 https://github.com/alceops/automation-packs/issues/new?template=pr_readiness_request.yml
 
-It requires a public/redacted PR or diff plus the failing check/reviewer blocker. Count only those inputs or explicit fixed-scope cleanup intent.
+It requires a public/redacted PR or diff plus the failing check/reviewer blocker. Count only those inputs or explicit fixed-scope cleanup intent. For narrower blocked-CI buyers, use `pr-readiness-checker-lite/ci_failure_preflight.md` or `--ci-preflight-template` to request the exact command/log excerpt without credentials, private repo access, or CI dashboard login.
 
 If the generic freelancer sample-request path is too vague, use the agency-specific checklist in `upwork-proposal-scorer-slim/agency_proposal_qa_checklist.md` for a permissioned, no-login proposal QA sample ask.

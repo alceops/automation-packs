@@ -126,16 +126,43 @@ def render_service_template() -> str:
     ])
 
 
+def render_ci_preflight_template() -> str:
+    """Return a narrow CI-failure intake template for buyers with a blocked PR."""
+    return "\n".join([
+        "CI failure preflight for fixed-scope PR cleanup",
+        "",
+        "Use this when the buyer has a public or redacted PR/diff plus a failing check. Do not request credentials, private repo access, private logs, secrets, or CI dashboard login.",
+        "",
+        "Qualified signal: a public PR URL or redacted diff AND the exact failing command/log excerpt or reviewer blocker. Do not count stars, views, generic interest, silence, or requests for login/scraping/auto-fixing.",
+        "",
+        "Paste-ready buyer ask:",
+        "1. Public PR URL or redacted diff-only note:",
+        "2. Failing command/check name:",
+        "3. Redacted failure excerpt (first error + stack/context only):",
+        "4. What changed recently in the PR:",
+        "5. Desired outcome: reproduce note / minimal patch / test update / reviewer reply draft:",
+        "6. Paid-pilot interest after the free preflight: no / maybe / yes fixed-scope cleanup:",
+        "",
+        "Safe first response if qualified:",
+        "- restate the suspected failure class and the smallest reproducible command;",
+        "- name one likely fix path and one rollback/risk note;",
+        "- offer paid fixed-scope cleanup only after explicit buyer intent; payment/invoice/account/KYC setup remains on Corey hold.",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score a git diff for PR readiness without network access.")
     parser.add_argument("--diff", help="Path to a saved git diff text file")
     parser.add_argument("--service-template", action="store_true", help="Print a paste-safe buyer intake template for PR cleanup requests")
+    parser.add_argument("--ci-preflight-template", action="store_true", help="Print a narrower CI-failure buyer intake template")
     args = parser.parse_args()
     if args.service_template:
         print(render_service_template())
+    elif args.ci_preflight_template:
+        print(render_ci_preflight_template())
     else:
         if not args.diff:
-            parser.error("--diff is required unless --service-template is used")
+            parser.error("--diff is required unless a template flag is used")
         print(render(score_diff(read_text(args.diff))))
     return 0
 

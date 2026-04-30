@@ -1,6 +1,6 @@
 import unittest
 from pathlib import Path
-from pr_readiness_checker_lite import changed_files, score_diff, render, render_service_template
+from pr_readiness_checker_lite import changed_files, score_diff, render, render_service_template, render_ci_preflight_template
 
 
 class ReadinessCheckerTests(unittest.TestCase):
@@ -31,6 +31,13 @@ class ReadinessCheckerTests(unittest.TestCase):
         self.assertIn("Qualified signal", text)
         self.assertIn("payment collection stays on Corey hold", text)
         self.assertIn("no GitHub login", text)
+    def test_ci_preflight_template_is_narrow_and_safe(self):
+        text = render_ci_preflight_template()
+        self.assertIn("CI failure preflight", text)
+        self.assertIn("public PR URL or redacted diff", text)
+        self.assertIn("exact failing command", text)
+        self.assertIn("payment/invoice/account/KYC setup remains on Corey hold", text)
+        self.assertIn("Do not count stars", text)
 
 
 if __name__ == "__main__":

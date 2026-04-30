@@ -6,16 +6,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use only public or redacted PR/diff text. Do not share credentials, secrets, private customer data, or private repo access.
-        This pack does not log in, scrape, auto-comment, or guarantee merge/payment.
+        Use only public or redacted PR/diff text. Do not share credentials, secrets, private customer data, private logs, CI dashboard access, or private repo access.
+        This pack does not log in, scrape, auto-comment, or guarantee merge/payment. If this is a blocked-CI request, include the exact failing command/check and a redacted first-error excerpt.
   - type: checkboxes
     id: safety
     attributes:
       label: Safety check
       options:
-        - label: I am sharing only public/redacted PR or diff content, not credentials/secrets/private customer data.
+        - label: I am sharing only public/redacted PR or diff content, not credentials/secrets/private customer data/private logs.
           required: true
-        - label: I understand this is local text review only: no login, scraping, auto-commenting, or guaranteed merge/payment.
+        - label: I understand this is local text review only: no login, scraping, private repo/CI dashboard access, auto-commenting, or guaranteed merge/payment.
           required: true
   - type: input
     id: pr-url
