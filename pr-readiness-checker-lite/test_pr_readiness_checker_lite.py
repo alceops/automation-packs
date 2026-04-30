@@ -7,6 +7,7 @@ from pr_readiness_checker_lite import (
     render_service_template,
     render_ci_preflight_template,
     render_reviewer_reply_template,
+    render_buyer_proof_template,
 )
 
 
@@ -53,6 +54,14 @@ class ReadinessCheckerTests(unittest.TestCase):
         self.assertIn("fixed-scope cleanup", text)
         self.assertIn("Payment/invoice/account/KYC setup stays on Corey hold", text)
         self.assertIn("Silence, stars, views", text)
+
+    def test_buyer_proof_template_is_direct_and_safe(self):
+        text = render_buyer_proof_template()
+        self.assertIn("Blocked PR buyer proof path", text)
+        self.assertIn("no-login PR readiness proof", text)
+        self.assertIn("public/redacted PR or diff", text)
+        self.assertIn("Corey approval for payment setup", text)
+        self.assertIn("unsafe private-access asks are no-count", text)
 
 
 if __name__ == "__main__":

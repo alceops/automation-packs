@@ -179,12 +179,36 @@ def render_reviewer_reply_template() -> str:
     ])
 
 
+def render_buyer_proof_template() -> str:
+    """Return a direct buyer proof path for a no-login blocked-PR sample."""
+    return "\n".join([
+        "Blocked PR buyer proof path",
+        "",
+        "Use this when public issues are silent and the next cash-forward move is a narrow no-login proof, not more passive monitoring.",
+        "",
+        "Paste-ready public ask:",
+        "I can do a no-login PR readiness proof from public/redacted material only. Paste a public PR URL or redacted saved diff, the exact failing command/check or reviewer blocker, and the desired outcome: reproduce note, minimal patch, tests, or reviewer reply.",
+        "",
+        "What the free proof returns:",
+        "1. Readiness verdict from the local diff only.",
+        "2. Top 3 risk findings.",
+        "3. Smallest reproducible command or missing input.",
+        "4. One likely fix path.",
+        "5. One rollback/reviewer note.",
+        "",
+        "Qualification rule: count only usable public/redacted PR or diff inputs with an exact failing command/log/reviewer blocker, or explicit fixed-scope cleanup intent. Silence, views, stars, generic interest, and unsafe private-access asks are no-count.",
+        "",
+        "Safety/payment boundary: no credentials, secrets, private repo exports, private logs, CI dashboard login, scraping, auto-commenting, guaranteed merge claims, payment links, invoices, account setup, or KYC before explicit paid-pilot intent and Corey approval for payment setup.",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score a git diff for PR readiness without network access.")
     parser.add_argument("--diff", help="Path to a saved git diff text file")
     parser.add_argument("--service-template", action="store_true", help="Print a paste-safe buyer intake template for PR cleanup requests")
     parser.add_argument("--ci-preflight-template", action="store_true", help="Print a narrower CI-failure buyer intake template")
     parser.add_argument("--reviewer-reply-template", action="store_true", help="Print a paste-ready reply for qualified blocked-PR cleanup inputs")
+    parser.add_argument("--buyer-proof-template", action="store_true", help="Print a no-login buyer proof path for blocked PR cleanup")
     args = parser.parse_args()
     if args.service_template:
         print(render_service_template())
@@ -192,6 +216,8 @@ def main() -> int:
         print(render_ci_preflight_template())
     elif args.reviewer_reply_template:
         print(render_reviewer_reply_template())
+    elif args.buyer_proof_template:
+        print(render_buyer_proof_template())
     else:
         if not args.diff:
             parser.error("--diff is required unless a template flag is used")

@@ -34,6 +34,7 @@ python3 pr_readiness_checker_lite.py --diff sample_diff.txt
 python3 pr_readiness_checker_lite.py --service-template
 python3 pr_readiness_checker_lite.py --ci-preflight-template
 python3 pr_readiness_checker_lite.py --reviewer-reply-template
+python3 pr_readiness_checker_lite.py --buyer-proof-template
 python3 -m unittest -v
 ```
 
@@ -58,6 +59,6 @@ For PR cleanup buyers, use the dedicated PR readiness request form:
 
 https://github.com/alceops/automation-packs/issues/new?template=pr_readiness_request.yml
 
-It requires a public/redacted PR or diff plus the failing check/reviewer blocker. Count only those inputs or explicit fixed-scope cleanup intent. For narrower blocked-CI buyers, use `pr-readiness-checker-lite/ci_failure_preflight.md` or `--ci-preflight-template` to request the exact command/log excerpt without credentials, private repo access, or CI dashboard login. Once qualified inputs arrive, use `pr-readiness-checker-lite/reviewer_reply_template.md` or `--reviewer-reply-template` to send a safe first response and route any explicit paid cleanup intent to Corey before payment setup.
+It requires a public/redacted PR or diff plus the failing check/reviewer blocker. Count only those inputs or explicit fixed-scope cleanup intent. For narrower blocked-CI buyers, use `pr-readiness-checker-lite/ci_failure_preflight.md` or `--ci-preflight-template` to request the exact command/log excerpt without credentials, private repo access, or CI dashboard login. Once qualified inputs arrive, use `pr-readiness-checker-lite/reviewer_reply_template.md` or `--reviewer-reply-template` to send a safe first response and route any explicit paid cleanup intent to Corey before payment setup. If issue intake remains silent, use `pr-readiness-checker-lite/blocked_pr_buyer_proof.md` or `--buyer-proof-template` as a direct no-login buyer proof ask: public/redacted PR or diff plus exact blocker in, short readiness proof out, no payment setup before explicit fixed-scope intent.
 
 If the generic freelancer sample-request path is too vague, use the agency-specific checklist in `upwork-proposal-scorer-slim/agency_proposal_qa_checklist.md` for a permissioned, no-login proposal QA sample ask.
