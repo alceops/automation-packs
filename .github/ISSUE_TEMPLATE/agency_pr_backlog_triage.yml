@@ -1,0 +1,64 @@
+name: Agency PR backlog triage sample
+about: Request one no-login triage sample for a blocked public/redacted PR queue
+title: "Agency PR backlog triage: <repo/client/project>"
+labels: [sample-request, pr-readiness, agency-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this only for public/redacted PR or diff material. Do not share credentials, secrets, private customer data, private logs, CI dashboard access, or private repo access.
+        The free sample returns a readiness verdict, top blockers/missing inputs, likely fixed-scope cleanup path, safe reviewer/maintainer reply text, and whether it is a fixed-scope cleanup candidate.
+        Payment collection stays on Corey hold until explicit paid-pilot intent and separate approval for invoice/payment/account/KYC setup.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I am sharing only public/redacted PR or diff content, not credentials/secrets/private customer data/private logs.
+          required: true
+        - label: I understand this is no-login local text review only: no scraping, private repo/CI dashboard access, auto-commenting, guaranteed merge/payment, invoice/payment link, account setup, KYC, wallet, or on-chain action.
+          required: true
+  - type: textarea
+    id: queue-context
+    attributes:
+      label: Blocked PR/review queue context
+      description: Paste public PR URLs or redacted diff summaries. Include at least one specific PR/diff for the free sample.
+      placeholder: "PR 1: https://github.com/owner/repo/pull/123 — blocked on tests\nPR 2: redacted diff only — reviewer asked for split/refactor"
+    validations:
+      required: true
+  - type: textarea
+    id: exact-blocker
+    attributes:
+      label: Exact blocker for the first sample
+      description: Include failing command/check name, first public/redacted error excerpt, reviewer concern, or release blocker.
+      placeholder: "CI failing: npm test -- tests/foo.test.ts; reviewer asked for rollback notes"
+    validations:
+      required: true
+  - type: dropdown
+    id: cleanup-type
+    attributes:
+      label: Desired cleanup shape
+      options:
+        - Tests/coverage proof
+        - Reviewer map and merge notes
+        - Split/refactor plan
+        - Docs or release note
+        - Risk/rollback notes
+        - Unsure — triage first
+    validations:
+      required: true
+  - type: dropdown
+    id: paid-pilot
+    attributes:
+      label: Paid fixed-scope cleanup interest after the free sample
+      description: Payment collection waits for Corey approval before invoice/payment/account/KYC setup.
+      options:
+        - "No — free sample only"
+        - "Maybe — decide after sample"
+        - "Yes — interested in fixed-scope cleanup after sample"
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Qualified signal rule: only non-owner usable public/redacted PR or diff input plus an exact blocker, or explicit fixed-scope cleanup intent, counts as pipeline. Stars, views, silence, owner-created issues/comments, generic interest, unsafe private-data/login/scraping/auto-comment requests, and guaranteed-merge/payment asks do not count.
