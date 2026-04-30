@@ -33,3 +33,5 @@ If this is useful, open a GitHub issue using the sample request template or emai
 4. what you want customized in the rubric.
 
 Qualified signal rule: only paste-safe sample inputs or explicit paid-pilot intent count. Payment collection is held until Corey approves invoice/payment/account setup.
+
+For a 60-second buyer proof path, see `upwork-proposal-scorer-slim/buyer_quickstart_proof.md`.

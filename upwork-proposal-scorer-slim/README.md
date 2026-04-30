@@ -38,6 +38,7 @@ Suggested paid pilot after explicit buyer interest: **$49** for a customized rub
 - `sample_proposal.txt` — public/demo-safe draft proposal.
 - `sample_output.txt` — verified sample output.
 - `buyer_one_page.md` — paste-ready buyer explanation and ask.
+- `buyer_quickstart_proof.md` — public proof/quickstart that tells a buyer exactly what to send for a safe sample.
 - `first_buyer_send_card.md` — one-message warm/permissioned send card, response routes, and signal-safe log.
 - `buyer_intake_template.md` — exact safe reply after a buyer asks for a sample, trial, or more detail.
 - `qualified_intake_reply_template.md` — paste-ready follow-up after a buyer gives qualified intake or asks for a sample.
