@@ -1,0 +1,5 @@
+Hi — I can help with a small first milestone.
+
+I have built Python CSV cleanup scripts for client operations teams and shipped QA reports that flag duplicate rows, missing matches, and risky assumptions before the data reaches a CRM.
+
+For this milestone, I would inspect the current parsing and scoring rules, reproduce the duplicate-row behavior on a sample export, and return a concise patch plus before/after notes. If helpful, I can start by reviewing one sample CSV and the script, then share the likely fix path today.

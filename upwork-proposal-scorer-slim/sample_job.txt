@@ -1,0 +1,3 @@
+We need a Python automation expert to clean up a flaky lead intake script. Current script reads CSV exports, normalizes company names, scores fit, and writes a short report. It sometimes duplicates rows and misses obvious keyword matches.
+
+Please propose a small first milestone: review the script, identify likely causes, and improve scoring accuracy without changing our CRM or requiring platform automation.

@@ -1,0 +1,12 @@
+Upwork Proposal Scorer Slim Report
+Score: 95/100
+Subscores:
+- job relevance: 25/25
+- proof specificity: 15/20
+- understanding: 20/20
+- risk reversal: 15/15
+- clarity/brevity: 10/10
+- CTA: 10/10
+Recommended fixes:
+- Draft is usable; keep final review human and avoid guaranteed outcomes or auto-send claims.
+Safety boundary: local paste-in tool only; no scraping, login, auto-send, guaranteed wins, payment links, or account setup.
