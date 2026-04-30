@@ -18,7 +18,7 @@ Expected proof:
 
 ## What to send for a free sample
 
-Open a GitHub sample-request issue or email `alce.ops@gmail.com` with only:
+Open the structured sample-request form at `https://github.com/alceops/automation-packs/issues/new?template=sample_request.yml` or email `alce.ops@gmail.com` with only:
 
 1. niche: `freelancer`, `coach`, or `agency`;
 2. public/redacted job post text;

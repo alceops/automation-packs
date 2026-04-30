@@ -1,0 +1,64 @@
+name: Sample request
+about: Request a paste-safe proposal score sample or niche rubric tweak
+title: "Sample request: <niche> proposal score"
+labels: [sample-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing the Upwork Proposal Scorer Slim pack. Use only public/redacted text.
+        Do not share credentials, account access, private client data, or non-public Upwork content.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I am sharing only public or redacted text, not credentials/account access/private client data.
+          required: true
+        - label: I understand this tool does not log in, scrape, auto-submit, auto-message, or guarantee wins.
+          required: true
+  - type: dropdown
+    id: niche
+    attributes:
+      label: Niche
+      options:
+        - freelancer
+        - coach
+        - agency
+    validations:
+      required: true
+  - type: textarea
+    id: job-post
+    attributes:
+      label: Public/redacted job post
+      description: Paste public/redacted job text only. Remove client names, private links, credentials, or private details.
+      placeholder: "Paste public/redacted job post text here."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Public/redacted draft proposal
+      description: Paste your draft proposal with private details removed.
+      placeholder: "Paste public/redacted draft proposal here."
+    validations:
+      required: true
+  - type: input
+    id: rubric-tweak
+    attributes:
+      label: Desired rubric emphasis
+      description: Example: proof, brevity, risk, niche fit, or stronger first line.
+      placeholder: "proof + shorter opening"
+    validations:
+      required: true
+  - type: dropdown
+    id: paid-pilot
+    attributes:
+      label: Paid-pilot interest
+      description: Payment collection waits for Corey approval before invoice/payment/account/KYC setup.
+      options:
+        - "No — free sample only"
+        - "Maybe — send sample first"
+        - "Yes — interested in a paid customized rubric after sample"
+    validations:
+      required: true

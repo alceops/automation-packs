@@ -25,7 +25,11 @@ python3 -m unittest -v
 
 ## Buyer path
 
-If this is useful, open a GitHub issue using the sample request template or email `alce.ops@gmail.com` with:
+If this is useful, open the structured sample request form:
+
+https://github.com/alceops/automation-packs/issues/new?template=sample_request.yml
+
+Or email `alce.ops@gmail.com` with:
 
 1. your niche (`freelancer`, `coach`, or `agency`),
 2. a public/redacted job post,
