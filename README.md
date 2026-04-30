@@ -31,6 +31,7 @@ PR Readiness Checker:
 ```bash
 cd pr-readiness-checker-lite
 python3 pr_readiness_checker_lite.py --diff sample_diff.txt
+python3 pr_readiness_checker_lite.py --service-template
 python3 -m unittest -v
 ```
 
@@ -50,5 +51,11 @@ Or email `alce.ops@gmail.com` with:
 Qualified signal rule: only paste-safe sample inputs or explicit paid-pilot intent count. Payment collection is held until Corey approves invoice/payment/account setup.
 
 For a 60-second buyer proof path, see `upwork-proposal-scorer-slim/buyer_quickstart_proof.md`.
+
+For PR cleanup buyers, use the dedicated PR readiness request form:
+
+https://github.com/alceops/automation-packs/issues/new?template=pr_readiness_request.yml
+
+It requires a public/redacted PR or diff plus the failing check/reviewer blocker. Count only those inputs or explicit fixed-scope cleanup intent.
 
 If the generic freelancer sample-request path is too vague, use the agency-specific checklist in `upwork-proposal-scorer-slim/agency_proposal_qa_checklist.md` for a permissioned, no-login proposal QA sample ask.

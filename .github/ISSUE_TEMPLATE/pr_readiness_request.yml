@@ -1,0 +1,66 @@
+name: PR readiness sample request
+about: Request a paste-safe PR/diff readiness review or fixed-scope cleanup sample
+title: "PR readiness request: <repo/pr or redacted diff>"
+labels: [sample-request, pr-readiness]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use only public or redacted PR/diff text. Do not share credentials, secrets, private customer data, or private repo access.
+        This pack does not log in, scrape, auto-comment, or guarantee merge/payment.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I am sharing only public/redacted PR or diff content, not credentials/secrets/private customer data.
+          required: true
+        - label: I understand this is local text review only: no login, scraping, auto-commenting, or guaranteed merge/payment.
+          required: true
+  - type: input
+    id: pr-url
+    attributes:
+      label: Public PR/repo URL or redacted-diff note
+      description: Paste a public PR URL, public repo URL, or say "redacted diff only".
+      placeholder: "https://github.com/owner/repo/pull/123 or redacted diff only"
+    validations:
+      required: true
+  - type: textarea
+    id: diff-or-summary
+    attributes:
+      label: Redacted diff or risky-file summary
+      description: Paste a saved/redacted git diff or summarize changed files with private details removed.
+      placeholder: "diff --git ... or changed-files summary"
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: Failing check, reviewer concern, or merge blocker
+      description: Include exact test command/output if public/redacted.
+      placeholder: "CI failing: npm test -- ... / reviewer asked for tests / PR too large"
+    validations:
+      required: true
+  - type: dropdown
+    id: cleanup-type
+    attributes:
+      label: Desired cleanup
+      options:
+        - Tests/coverage proof
+        - Reviewer map and merge notes
+        - Split/refactor plan
+        - Docs or release note
+        - Risk/rollback notes
+    validations:
+      required: true
+  - type: dropdown
+    id: paid-pilot
+    attributes:
+      label: Paid-pilot interest
+      description: Payment collection waits for Corey approval before invoice/payment/account/KYC setup.
+      options:
+        - "No — free sample only"
+        - "Maybe — send sample first"
+        - "Yes — interested in paid fixed-scope cleanup after sample"
+    validations:
+      required: true

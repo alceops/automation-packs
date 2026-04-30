@@ -15,6 +15,7 @@ It is designed for cash-forward, low-risk service offers:
 
 ```bash
 python3 pr_readiness_checker_lite.py --diff sample_diff.txt
+python3 pr_readiness_checker_lite.py --service-template
 python3 -m unittest -v
 ```
 
@@ -27,3 +28,5 @@ Use it when a PR is stuck, noisy, or risky. Paste a redacted diff and send the o
 3. whether the desired service is test coverage, reviewer-map notes, or a small split/refactor.
 
 Qualified signal rule: only a real public PR, redacted diff, or explicit fixed-scope cleanup request counts. Payment collection stays on Corey hold until invoice/payment/account setup is approved.
+
+Use `pr_cleanup_sample_request.md` or `--service-template` to convert interest into paste-safe public/redacted inputs before any payment discussion.

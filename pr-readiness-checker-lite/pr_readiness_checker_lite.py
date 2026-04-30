@@ -104,11 +104,39 @@ def render(result: dict) -> str:
     return "\n".join(out)
 
 
+def render_service_template() -> str:
+    """Return a paste-safe intake template for converting PR/diff interest into qualified pipeline."""
+    return "\n".join([
+        "PR Readiness fixed-scope cleanup intake",
+        "",
+        "Use this only for public or redacted PR/diff review. Do not share credentials, private repo exports, private customer data, secrets, or non-public source.",
+        "",
+        "Qualified signal: a public PR URL, a redacted saved git diff, or explicit fixed-scope cleanup intent. Do not count stars, views, generic interest, silence, or requests for login/scraping/auto-commenting.",
+        "",
+        "Paste these inputs:",
+        "1. Public PR or repo URL (or say redacted diff only):",
+        "2. Saved/redacted git diff or the risky file snippets:",
+        "3. Failing CI/test command or reviewer concern:",
+        "4. Desired cleanup: tests, reviewer map, split/refactor, docs, or release notes:",
+        "5. Paid-pilot interest: free sample only / maybe after sample / yes, fixed-scope cleanup:",
+        "",
+        "Safety boundaries:",
+        "- local text review only; no GitHub login, private repo access, scraping, auto-comments, or guaranteed merge/payment claims;",
+        "- payment collection stays on Corey hold until invoice/payment/account/KYC setup is approved after explicit buyer intent.",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score a git diff for PR readiness without network access.")
-    parser.add_argument("--diff", required=True, help="Path to a saved git diff text file")
+    parser.add_argument("--diff", help="Path to a saved git diff text file")
+    parser.add_argument("--service-template", action="store_true", help="Print a paste-safe buyer intake template for PR cleanup requests")
     args = parser.parse_args()
-    print(render(score_diff(read_text(args.diff))))
+    if args.service_template:
+        print(render_service_template())
+    else:
+        if not args.diff:
+            parser.error("--diff is required unless --service-template is used")
+        print(render(score_diff(read_text(args.diff))))
     return 0
 
 
