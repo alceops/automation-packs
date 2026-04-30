@@ -202,6 +202,36 @@ def render_buyer_proof_template() -> str:
     ])
 
 
+def render_maintainer_triage_template() -> str:
+    """Return a maintainer-facing triage offer for permissioned blocked-PR cleanup."""
+    return "\n".join([
+        "Maintainer blocked-PR triage offer",
+        "",
+        "Use this as a sharper buyer angle when passive sample-request intake has no qualified replies. It targets maintainers or agency leads with visible PR review/CI backlog and stays public/redacted-only.",
+        "",
+        "Paste-ready permissioned ask:",
+        "I can triage one blocked public PR from public/redacted material only and return a short maintainer handoff: readiness verdict, top blocker, smallest repro/missing input, likely patch/test path, and a reviewer-ready reply. If useful, we can discuss fixed-scope cleanup after that.",
+        "",
+        "Qualified inputs before counting pipeline:",
+        "1. Public PR URL or redacted saved diff:",
+        "2. Exact failing command/check name or reviewer blocker:",
+        "3. Redacted first error/log excerpt if CI is failing:",
+        "4. Desired maintainer outcome: close as stale / request changes / minimal patch / tests / reviewer reply:",
+        "5. Paid-pilot intent after the free triage: no / maybe / yes fixed-scope cleanup:",
+        "",
+        "Free triage output:",
+        "- ready / needs-tightening / not-ready verdict;",
+        "- one blocker that prevents maintainer action;",
+        "- smallest repro or missing input;",
+        "- likely patch or test path;",
+        "- paste-ready maintainer/reviewer note.",
+        "",
+        "No-count outcomes: silence, stars, views, generic interest, requests for private repo access, requests to log into CI/GitHub, broad backlog consulting without a public/redacted PR, or guaranteed-merge/payment expectations.",
+        "",
+        "Safety/payment boundary: no credentials, secrets, private repo exports, private logs, customer data, CI dashboard login, scraping, auto-commenting, guaranteed merge claims, payment links, invoices, account setup, or KYC before explicit paid-pilot intent and Corey approval for payment setup.",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score a git diff for PR readiness without network access.")
     parser.add_argument("--diff", help="Path to a saved git diff text file")
@@ -209,6 +239,7 @@ def main() -> int:
     parser.add_argument("--ci-preflight-template", action="store_true", help="Print a narrower CI-failure buyer intake template")
     parser.add_argument("--reviewer-reply-template", action="store_true", help="Print a paste-ready reply for qualified blocked-PR cleanup inputs")
     parser.add_argument("--buyer-proof-template", action="store_true", help="Print a no-login buyer proof path for blocked PR cleanup")
+    parser.add_argument("--maintainer-triage-template", action="store_true", help="Print a maintainer-facing blocked-PR triage offer")
     args = parser.parse_args()
     if args.service_template:
         print(render_service_template())
@@ -218,6 +249,8 @@ def main() -> int:
         print(render_reviewer_reply_template())
     elif args.buyer_proof_template:
         print(render_buyer_proof_template())
+    elif args.maintainer_triage_template:
+        print(render_maintainer_triage_template())
     else:
         if not args.diff:
             parser.error("--diff is required unless a template flag is used")

@@ -8,6 +8,7 @@ from pr_readiness_checker_lite import (
     render_ci_preflight_template,
     render_reviewer_reply_template,
     render_buyer_proof_template,
+    render_maintainer_triage_template,
 )
 
 
@@ -62,6 +63,14 @@ class ReadinessCheckerTests(unittest.TestCase):
         self.assertIn("public/redacted PR or diff", text)
         self.assertIn("Corey approval for payment setup", text)
         self.assertIn("unsafe private-access asks are no-count", text)
+
+    def test_maintainer_triage_template_is_permissioned_and_safe(self):
+        text = render_maintainer_triage_template()
+        self.assertIn("Maintainer blocked-PR triage offer", text)
+        self.assertIn("public/redacted material only", text)
+        self.assertIn("paste-ready maintainer/reviewer note", text)
+        self.assertIn("No-count outcomes", text)
+        self.assertIn("Corey approval for payment setup", text)
 
 
 if __name__ == "__main__":
