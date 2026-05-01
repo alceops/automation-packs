@@ -232,6 +232,30 @@ def render_maintainer_triage_template() -> str:
     ])
 
 
+def render_sample_response_template() -> str:
+    """Return the first free triage response to send after qualified public/redacted inputs arrive."""
+    return "\n".join([
+        "Qualified PR backlog triage sample response",
+        "",
+        "Use this only after a non-owner provides a usable public/redacted PR or diff plus an exact failing command/log/reviewer blocker. Do not use it for owner-created demo issues, stars, views, silence, generic interest, bots, or unsafe private-data/login requests.",
+        "",
+        "Paste-ready free sample:",
+        "Thanks — I can triage this from the public/redacted material only. Here is the free no-login sample:",
+        "",
+        "1. Readiness verdict: <ready-with-notes | needs-tightening | not-ready> because <one concrete reason>.",
+        "2. Top blocker: <exact failing command/check/reviewer issue or missing input>.",
+        "3. Smallest next proof: <one command to rerun, one test to add, one reviewer-map section, or one split/refactor step>.",
+        "4. Likely fixed-scope cleanup path: <small patch/test/docs/reviewer-note scope only>.",
+        "5. Safe reviewer/maintainer reply: <paste-ready sentence that avoids guarantees and private data>.",
+        "",
+        "If you want implementation help after the sample, reply with \"fixed-scope cleanup\" and confirm the work can stay within public/redacted repo or diff material. Payment links, invoices, account setup, KYC, wallet, or on-chain actions stay on Corey hold until explicit paid-pilot intent and separate approval.",
+        "",
+        "Reject or no-count:",
+        "- credentials, secrets, private repo exports, private logs, customer data, CI dashboard login, scraping, auto-commenting, guaranteed merge/payment claims, or broad consulting without a public/redacted PR/diff;",
+        "- owner-created issues/comments, bot comments, vanity metrics, silence, generic interest, or unsafe requests.",
+    ])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score a git diff for PR readiness without network access.")
     parser.add_argument("--diff", help="Path to a saved git diff text file")
@@ -240,6 +264,7 @@ def main() -> int:
     parser.add_argument("--reviewer-reply-template", action="store_true", help="Print a paste-ready reply for qualified blocked-PR cleanup inputs")
     parser.add_argument("--buyer-proof-template", action="store_true", help="Print a no-login buyer proof path for blocked PR cleanup")
     parser.add_argument("--maintainer-triage-template", action="store_true", help="Print a maintainer-facing blocked-PR triage offer")
+    parser.add_argument("--sample-response-template", action="store_true", help="Print the first free triage response for qualified public/redacted inputs")
     args = parser.parse_args()
     if args.service_template:
         print(render_service_template())
@@ -251,6 +276,8 @@ def main() -> int:
         print(render_buyer_proof_template())
     elif args.maintainer_triage_template:
         print(render_maintainer_triage_template())
+    elif args.sample_response_template:
+        print(render_sample_response_template())
     else:
         if not args.diff:
             parser.error("--diff is required unless a template flag is used")

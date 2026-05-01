@@ -9,6 +9,7 @@ from pr_readiness_checker_lite import (
     render_reviewer_reply_template,
     render_buyer_proof_template,
     render_maintainer_triage_template,
+    render_sample_response_template,
 )
 
 
@@ -71,6 +72,14 @@ class ReadinessCheckerTests(unittest.TestCase):
         self.assertIn("paste-ready maintainer/reviewer note", text)
         self.assertIn("No-count outcomes", text)
         self.assertIn("Corey approval for payment setup", text)
+
+    def test_sample_response_template_converts_qualified_input_safely(self):
+        text = render_sample_response_template()
+        self.assertIn("Qualified PR backlog triage sample response", text)
+        self.assertIn("non-owner provides a usable public/redacted PR or diff", text)
+        self.assertIn("fixed-scope cleanup", text)
+        self.assertIn("Payment links, invoices, account setup, KYC", text)
+        self.assertIn("owner-created issues/comments", text)
 
 
 if __name__ == "__main__":
